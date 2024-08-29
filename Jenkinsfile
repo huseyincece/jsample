@@ -4,12 +4,13 @@ pipeline {
     environment {
         DOCKER_HUB_REPO = 'odinedevops/my-python-app'
         DOCKER_HUB_CREDS = credentials('DockerHub')
+        GIT_BRANCH = 'main'
     }
 
     stages {
         stage('Clone Repository') {
             steps {
-                git 'https://github.com/huseyincece/jsample.git'
+                git branch: "${env.GIT_BRANCH}", url: 'https://github.com/huseyincece/jsample.git'
             }
         }
 
